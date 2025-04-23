@@ -3,7 +3,8 @@ class Metronome
     constructor(tempo = 120)
     {
         this.audioContext = null;
-        this.notesInQueue = [];         // notes that have been put into the web audio and may or may not have been played yet {note, time}
+        this.notesInQueue = [];         // notes that have been put into the web audio and may or 
+                                        // may not have been played yet {note, time}
         this.currentBeatInBar = 0;
         this.beatsPerBar = 4;
         this.tempo = tempo;
@@ -17,7 +18,8 @@ class Metronome
     nextNote()
     {
         // Advance current note and time by a quarter note (crotchet if you're posh)
-        var secondsPerBeat = 60.0 / this.tempo; // Notice this picks up the CURRENT tempo value to calculate beat length.
+        var secondsPerBeat = 60.0 / this.tempo; // Notice this picks up the CURRENT tempo value 
+                                                // to calculate beat length.
         this.nextNoteTime += secondsPerBeat; // Add beat length to last beat time
     
         this.currentBeatInBar++;    // Advance the beat number, wrap to zero
@@ -43,13 +45,27 @@ class Metronome
         osc.connect(envelope);
         envelope.connect(this.audioContext.destination);
     
+        // sound the beat
         osc.start(time);
         osc.stop(time + 0.03);
+
+        // display the beat
+        let beatCount = this.currentBeatInBar + 1;
+        var beatElement = document.getElementById('beat');
+        setTimeout(function() {
+            beat.textContent = beatCount;
+            if (beatCount == 1) {
+                beatElement.style.color = '#FF0000';
+            } else {
+                beatElement.style.color = '#FFFFFF';
+            }
+        }, time);
     }
 
     scheduler()
     {
-        // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
+        // while there are notes that will need to play before the next interval, schedule them and 
+        // advance the pointer.
         while (this.nextNoteTime < this.audioContext.currentTime + this.scheduleAheadTime ) {
             this.scheduleNote(this.currentBeatInBar, this.nextNoteTime);
             this.nextNote();

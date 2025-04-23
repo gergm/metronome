@@ -39,6 +39,10 @@ body {
     font-size: 40px;
 }
 
+#beat {
+    font-size: 60px;
+}
+
 .bpm {
     font-size: 12px;
     text-align: center;
@@ -54,6 +58,10 @@ body {
 }
 
 .tempo-container {
+    margin: 0 15px;
+}
+
+.beat-container {
     margin: 0 15px;
 }
 
