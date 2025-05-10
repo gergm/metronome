@@ -24,3 +24,17 @@ for (var i = 0; i < tempoChangeButtons.length; i++) {
         tempo.textContent = metronome.tempo;
     });
 }
+
+var rhythmPatternButtons = document.getElementsByName('rhythm-pattern');
+for (var i = 0; i < rhythmPatternButtons.length; i++) {
+    if (rhythmPatternButtons[i].checked) {
+        metronome.rhythmPattern = rhythmPatternButtons[i].value;
+        console.log(`rhythmPattern is ${metronome.rhythmPattern}`)
+    }
+    rhythmPatternButtons[i].addEventListener('click', function() {
+        if (this.checked) {
+            metronome.rhythmPattern = this.value;
+            console.log(`rhythmPattern is ${metronome.rhythmPattern}`);
+        }
+    });
+}

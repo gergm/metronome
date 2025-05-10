@@ -12,6 +12,20 @@
         <div id="play-pause-icon" class="play"></div>
     </button>
 
+    <form id="rhythm-container", name="rhythm-container">
+        <div class="heading1">Choose a rhythm pattern</div>
+        <input type="radio" id="simple" name="rhythm-pattern" value="Simple" checked>
+        <label for="simple">Simple (1 2 3 4)</label><br>
+        <input type="radio" id="double" name="rhythm-pattern" value="Double">
+        <label for="double">Double (1 & 2 & 3 & 4 &)</label><br>
+        <input type="radio" id="country" name="rhythm-pattern" value="Country">
+        <label for="country">Country (1 2 & 3 4 &)</label><br>
+        <input type="radio" id="folk" name="rhythm-pattern" value="Folk">
+        <label for="folk">Folk (1 2 3 & 4 &)</label><br>
+        <input type="radio" id="general" name="rhythm-pattern" value="General">
+        <label for="general">General (1 2 & _ & 4 &)</label><br>
+    </form>
+
     <div class="tempo-controls">
         <button class="tempo-change" data-change="-5">-5</button>
         <button class="tempo-change" data-change="-1">-</button>
@@ -31,7 +45,7 @@
     </div>
 
     <div class="created-by">
-        Created by <a href="https://grantjam.es" target="_blank">Grant James</a>
+        Based on work by <a href="https://grantjam.es" target="_blank">Grant James</a>
     </div>
 
     <script src="metronome.js"></script>
